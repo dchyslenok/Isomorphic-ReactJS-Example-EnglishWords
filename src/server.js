@@ -1,12 +1,17 @@
 import express  from 'express';
 import React    from 'react';
 import ReactDom from 'react-dom/server';
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore'
 import { match, RouterContext } from 'react-router';
+import { countRequest } from './actions/timeActions';
 import routes from './routes';
 
 const app = express();
 
 app.use((req, res) => {
+  const store = configureStore();
+
   match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) { // Если необходимо сделать redirect
       return res.redirect(301, redirectLocation.pathname + redirectLocation.search);
@@ -20,14 +25,24 @@ app.use((req, res) => {
       return res.status(404).send('Not found');
     }
 
-    const componentHTML = ReactDom.renderToString(<RouterContext {...renderProps} />);
-    return res.end(renderHTML(componentHTML));
+    const componentHTML = ReactDom.renderToString(
+      <Provider store={store}>
+        <RouterContext {...renderProps} />
+      </Provider>
+    );
+
+    store.dispatch();
+
+
+
+    const state = store.getState();
+    return res.end(renderHTML(componentHTML, state));
   });
 });
 
 const assetUrl = process.env.NODE_ENV !== 'production' ? 'http://localhost:8050' : '/';
 
-function renderHTML(componentHTML) {
+function renderHTML(componentHTML, initialState) {
   return `
     <!DOCTYPE html>
       <html>
@@ -36,6 +51,9 @@ function renderHTML(componentHTML) {
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>Hello React</title>
           <link rel="stylesheet" href="${assetUrl}/public/assets/styles.css">
+          <script type="application/javascript">
+            window.REDUX_INITIAL_STATE = ${JSON.stringify(initialState)};
+          </script>
       </head>
       <body>
         <div id="react-view">${componentHTML}</div>
