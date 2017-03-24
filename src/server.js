@@ -2,10 +2,10 @@ import express  from 'express';
 import React    from 'react';
 import ReactDom from 'react-dom/server';
 import { Provider } from 'react-redux';
-import configureStore from './store/configureStore'
+import configureStore from './store/configureStore';
 import { match, RouterContext } from 'react-router';
-import { countRequest } from './actions/timeActions';
 import routes from './routes';
+import { test } from './actions/counterActions'
 
 const app = express();
 
@@ -31,10 +31,7 @@ app.use((req, res) => {
       </Provider>
     );
 
-    store.dispatch();
-
-
-
+    store.dispatch(test());
     const state = store.getState();
     return res.end(renderHTML(componentHTML, state));
   });

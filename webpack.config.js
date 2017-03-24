@@ -55,14 +55,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        enforce: "pre",
-        loaders: ['eslint'],
-        include: [
-          path.resolve(__dirname, "src"),
-        ],
-      },
-      {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
