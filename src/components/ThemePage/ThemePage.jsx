@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class HelloWorldPage extends Component {
+class ThemePage extends Component {
 
   render() {
     return (
       <div>
-        <h1>Hello World!</h1>
+        <h1>ThemePage Page</h1>
       </div>
     );
   }
 }
 
-export default HelloWorldPage;
+export default ThemePage;

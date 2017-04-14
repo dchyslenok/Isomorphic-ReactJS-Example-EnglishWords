@@ -6,9 +6,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Link to='/'>Hello World</Link><br />
-        <Link to='/time'>time</Link><br />
-        <Link to='/counters'>counters</Link><br />
+        <Link to='/'>Home</Link><br />
+        {/*<Link to='/theme'>theme</Link><br />*/}
+        <Link to='/game'>game</Link><br />
         {this.props.children}
       </div>
     );
@@ -16,7 +16,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default App;

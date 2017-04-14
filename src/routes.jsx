@@ -1,14 +1,14 @@
 import React from 'react';
 import { IndexRoute, Route }  from 'react-router';
 import App from 'components/App';
-import CounterPage from 'components/CounterPage';
-import HelloWorldPage from 'components/HelloWorldPage';
-import TimePage from 'components/TimePage';
+import IndexPage from 'components/IndexPage';
+import ThemePage from 'components/ThemePage';
+import GamePage from 'components/GamePage';
 
 export default (
   <Route component={App} path='/'>
-    <IndexRoute component={HelloWorldPage} />
-    <Route component={CounterPage} path='counters' />
-    <Route component={TimePage} path='time' />
+    <IndexRoute component={IndexPage} />
+    <Route component={ThemePage} path='theme/:id' />
+    <Route component={GamePage} path='game' />
   </Route>
 );

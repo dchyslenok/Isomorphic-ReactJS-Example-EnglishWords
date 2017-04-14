@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
     })
   );
   plugins.push(new webpack.optimize.DedupePlugin());
-  plugins.push(new webpack.optimize.OccurenceOrderPlugin());
+  plugins.push(new webpack.optimize.OccurrenceOrderPlugin());
 } else {
   plugins.push(new webpack.LoaderOptionsPlugin({
     debug: true
@@ -75,7 +75,7 @@ module.exports = {
       {test: /\.(woff|woff2|ttf|eot)/, loader: 'url-loader?limit=1'},
       {
         test: /\.jsx?$/,
-        loader: process.env.NODE_ENV !== 'production' ? 'react-hot-loader!babel-loader!eslint-loader' : 'babel-loader',
+        loader: process.env.NODE_ENV !== 'production' ? 'react-hot-loader!babel-loader' : 'babel-loader',//!eslint-loader
         exclude: [/node_modules/, /public/]
       },
       {test: /\.json$/, loader: 'json-loader'}
