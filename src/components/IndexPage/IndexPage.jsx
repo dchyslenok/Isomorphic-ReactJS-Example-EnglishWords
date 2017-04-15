@@ -18,8 +18,8 @@ class IndexPage extends Component {
   }
 
   renderList() {
-    const { cards } = this.props;
-    return cards.map((item, index) => {
+    const { themeCards } = this.props;
+    return themeCards.map((item, index) => {
       return (
         <div key={index} onClick={() => {
           this.handleClick(item.id)
@@ -43,7 +43,7 @@ IndexPage.propTypes = propTypes;
 
 function mapStateToProps(state) {
   const propsObj = {
-    cards: state.counter.cards,
+    themeCards: state.root.themeCards,
   };
   return propsObj;
 }

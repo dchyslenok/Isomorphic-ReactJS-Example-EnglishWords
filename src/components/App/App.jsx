@@ -1,12 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react'
+import { bindActionCreators } from 'redux';;
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { activePageHome } from '../../actions';
 
 class App extends Component {
 
   render() {
+    const { activePageHome } = this.props;
     return (
       <div>
-        <Link to='/'>Home</Link><br />
+        <Link to='/' onClick={activePageHome}>Home</Link><br />
         {/*<Link to='/theme'>theme</Link><br />*/}
         <Link to='/game'>game</Link><br />
         {this.props.children}
@@ -15,8 +19,20 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  const propsObj = {};
+  return propsObj;
+};
+
+const mapDispatchToProps = (dispatch) => {
+  const actionObj = {
+    activePageHome: bindActionCreators(activePageHome, dispatch),
+  };
+  return actionObj;
+};
+
 App.propTypes = {
   children: PropTypes.node,
 };
 
-export default App;
+module.exports = connect(mapStateToProps, mapDispatchToProps)(App);

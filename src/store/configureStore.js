@@ -1,12 +1,14 @@
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
-// import middleware from './middleware';
-import counterReducer from './reducers/counterReducer';
-import thunk from 'redux-thunk';
+import middleware from './middleware';
+import * as reducers from './reducers';
 
 export default function create(initialState = {}) {
   const finalCreateStore = compose(
-    applyMiddleware(thunk),
+    applyMiddleware(middleware),
+    typeof window === 'object' && typeof window.devToolsExtension !== 'undefined'
+      ? window.devToolsExtension()
+      : f => f
   )(createStore);
 
-  return finalCreateStore(combineReducers({counter: counterReducer}), initialState);
+  return finalCreateStore(combineReducers({ ...reducers }), initialState);
 }
