@@ -5,8 +5,7 @@ import { Provider } from 'react-redux';
 import { match, RouterContext } from 'react-router';
 
 import waterfall from 'async/waterfall';
-import promise from 'es6-promise';
-import 'isomorphic-fetch';
+import API from './shared/api';
 
 import configureStore from './store/configureStore';
 import routes from './routes';
@@ -14,54 +13,49 @@ import actions from './actions';
 
 
 const app = express();
-
 app.use(express.static('public'));
-
 
 app.use('/theme/:id', (req, res) => {
   const store = configureStore();
   waterfall([
-    function(callback) {
+    function (callback) {
       store.dispatch(actions.wordsRequest());
-      fetch(`http://englishwords/api_v1/word/byCategorieId/${req.params.id}`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((cards) => {
-          store.dispatch(actions.wordsRequestSuccess(cards));
-          callback(null, 'one', 'two');
-        })
+      API.card.byThemeId(req.params.id).then(data => {
+        if (!data) {
+          store.dispatch(actions.wordsRequestFailed());
+          return callback(true, {});
+        }
+        store.dispatch(actions.wordsRequestSuccess(data));
+        callback();
+      });
     },
-  ], function(err, result) {
-    tmp(req, res, store);
+  ], (err, result) => {
+    renderApp(req, res, store);
   });
 });
 
 app.use((req, res) => {
   const store = configureStore();
   waterfall([
-    function(callback) {
-      store.dispatch(actions.themeListRequest());
-      fetch('http://englishwords/api_v1/categorie')
-        .then((response) => {
-          return response.json();
-        })
-        .then((cards) => {
-          store.dispatch(actions.themeListRequestSuccess(cards));
-          callback(null, 'one', 'two');
-        });
+    function (callback) {
+      store.dispatch(actions.themesRequest());
+      API.theme.getAll().then(data => {
+        if (!data) {
+          store.dispatch(actions.themesRequestFailed());
+          return callback(true, {});
+        }
+        store.dispatch(actions.themesRequestSuccess(data));
+        callback();
+      });
     },
   ], function(err, result) {
-    if (err) {
-      store.dispatch(actions.themeListRequestFailed());
-    }
-    tmp(req, res, store);
+    renderApp(req, res, store);
   });
 });
 
 const assetUrl = process.env.NODE_ENV !== 'production' ? 'http://localhost:8050' : '/';
 
-function tmp(req, res, store) {
+function renderApp(req, res, store) {
   match({ routes, location: req.originalUrl }, (error, redirectLocation, renderProps) => {
     if (redirectLocation) {
       return res.redirect(301, redirectLocation.pathname + redirectLocation.search);

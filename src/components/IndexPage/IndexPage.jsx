@@ -1,10 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
-
-const propTypes = {
-  dispatch: PropTypes.func.isRequired,
-};
+import { themeSelect } from '../../actions';
 
 class IndexPage extends Component {
   constructor(props) {
@@ -14,6 +12,9 @@ class IndexPage extends Component {
   }
 
   handleClick(id) {
+    const { themeSelect } = this.props;
+
+    themeSelect(id);
     browserHistory.push(`/theme/${id}`);
   }
 
@@ -39,8 +40,6 @@ class IndexPage extends Component {
   }
 }
 
-IndexPage.propTypes = propTypes;
-
 function mapStateToProps(state) {
   const propsObj = {
     themeCards: state.root.themeCards,
@@ -48,4 +47,11 @@ function mapStateToProps(state) {
   return propsObj;
 }
 
-export default connect(mapStateToProps)(IndexPage);
+const mapDispatchToProps = (dispatch) => {
+  const actionObj = {
+    themeSelect: bindActionCreators(themeSelect, dispatch),
+  };
+  return actionObj;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(IndexPage);

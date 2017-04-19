@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux';;
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { activePageHome } from '../../actions';
@@ -11,8 +11,7 @@ class App extends Component {
     return (
       <div>
         <Link to='/' onClick={activePageHome}>Home</Link><br />
-        {/*<Link to='/theme'>theme</Link><br />*/}
-        <Link to='/game'>game</Link><br />
+        {/*<Link to='/game'>game</Link><br />*/}
         {this.props.children}
       </div>
     );

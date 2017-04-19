@@ -5,16 +5,20 @@ module.exports = {
     return { type: actionTypes.ACTIVE_PAGE_HOME };
   },
 
-  themeListRequest: () => {
-    return { type: actionTypes.THEME_LIST_REQUEST };
+  themesRequest: () => {
+    return { type: actionTypes.THEMES_REQUEST };
   },
 
-  themeListRequestSuccess: (themeCards) => {
-    return { type: actionTypes.THEME_LIST_REQUEST_SUCCESS, themeCards };
+  themesRequestSuccess: (themeCards) => {
+    return { type: actionTypes.THEMES_REQUEST_SUCCESS, themeCards };
   },
 
-  themeListRequestFailed: () => {
-    return { type: actionTypes.THEME_LIST_REQUEST_FAILED };
+  themesRequestFailed: () => {
+    return { type: actionTypes.THEMES_REQUEST_FAILED };
+  },
+
+  themeSelect: (id) => {
+    return { type: actionTypes.THEME_SELECT, id };
   },
 
   wordsRequest: () => {

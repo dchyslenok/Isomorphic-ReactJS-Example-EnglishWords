@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';;
 import { connect } from 'react-redux';
 
 class ThemePage extends Component {
@@ -16,7 +15,6 @@ class ThemePage extends Component {
   }
 
   render() {
-
     return (
       <div>
         <h1>ThemePage Page</h1>
