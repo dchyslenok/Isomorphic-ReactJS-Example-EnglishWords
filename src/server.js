@@ -11,7 +11,7 @@ import configureStore from './store/configureStore';
 import routes from './routes';
 import actions from './actions';
 
-
+global.navigator = { userAgent: 'all' };
 const app = express();
 app.use(express.static('public'));
 
