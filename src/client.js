@@ -4,6 +4,7 @@ import { browserHistory, Router } from 'react-router';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import routes from './routes';
+import './styles/fontIcons.css';
 import './styles/app.css';
 import './styles/loader.css';
 
