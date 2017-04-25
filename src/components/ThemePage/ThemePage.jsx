@@ -6,9 +6,21 @@ class ThemePage extends Component {
   renderList() {
     const { wordCards } = this.props;
     return wordCards.map((item, index) => {
-      return(
-        <div key={index}>
-          <p>{item.word}</p>
+      return (
+        <div className='card-container'>
+          <div className='card'>
+            <div className='front'>
+              <div>
+                <img src={item.imgUrl} className='front-img'/>
+              </div>
+              <div className='card-text'>
+                <span className='word'>{item.word}</span>
+                <span className='transcript'>{`[${item.transcription}]`}</span></div>
+            </div>
+            <div className='back'>
+              <span className='word'>{item.translate}</span>
+            </div>
+          </div>
         </div>
       );
     });
@@ -16,8 +28,7 @@ class ThemePage extends Component {
 
   render() {
     return (
-      <div>
-        <h1>ThemePage Page</h1>
+      <div className="center">
         {this.renderList()}
       </div>
     );

@@ -32,7 +32,7 @@ class App extends Component {
             onTitleClick={this.handleGoToHome}
           />
           { isLoading && <Loader />}
-          <div className='center'>
+          <div>
             {this.props.children}
           </div>
         </div>

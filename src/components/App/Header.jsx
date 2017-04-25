@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import AppBar from 'material-ui/AppBar';
-import { APP_TITLE } from '../../constants';
+import { APP_TITLE, GIT_HUB_LINK_IN_PROJECT } from '../../constants';
 
 class Header extends Component {
   constructor() {
@@ -25,6 +25,7 @@ class Header extends Component {
         showMenuIconButton={false}
         iconClassNameRight='muidocs-icon-custom-github'
         onTitleTouchTap={onTitleClick}
+        onRightIconButtonTouchTap={() => window.open(GIT_HUB_LINK_IN_PROJECT, '_blank')}
       />
     );
   }

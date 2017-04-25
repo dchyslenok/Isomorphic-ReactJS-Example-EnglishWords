@@ -4,7 +4,7 @@ import 'isomorphic-fetch';
 export default class CardsWordAPI {
 
   byThemeId(id) {
-    return fetch(`http://englishwords.chyslenok.com/api_v1/word/byCategorieId/${id}`)
+    return fetch(`http://englishwords.chyslenok.com/api_v2/word/getAllCategorie/${id}`)
       .then((response) => {
         return response.json();
       })
