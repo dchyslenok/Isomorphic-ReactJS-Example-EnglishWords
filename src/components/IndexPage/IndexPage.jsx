@@ -3,12 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
-import {CardActions, CardMedia, CardText} from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import StorageIcon from 'material-ui/svg-icons/device/storage';
-
 import { themeSelect } from '../../actions';
-import Card from '../../controls/Card';
+import { CardTheme } from '../../controls/Card';
 
 class IndexPage extends Component {
   constructor(props) {
@@ -28,29 +24,19 @@ class IndexPage extends Component {
     const { themeCards } = this.props;
     return themeCards.map((item, index) => {
       return (
-      <Card>
-        <CardMedia>
-          <img src={item.imgUrl} style={{height: 200, width: 200, borderRadius: 2}}/>
-        </CardMedia>
-        <CardText style={{textAlign: 'center', fontSize: 16}}>
-          {item.name}
-        </CardText>
-        <CardActions >
-          <RaisedButton
-            label="список слов"
-            fullWidth={true}
-            icon={<StorageIcon />}
-            onClick={() => this.handleClick(item.id)}
-          />
-        </CardActions>
-      </Card>
+        <CardTheme
+          key={index}
+          handleClick={this.handleClick}
+          name={item.name}
+          imageUrl={item.imgUrl}
+        />
       );
     });
   }
 
   render() {
     return (
-      <div className="center">
+      <div className='center'>
         {this.renderList()}
       </div>
     );

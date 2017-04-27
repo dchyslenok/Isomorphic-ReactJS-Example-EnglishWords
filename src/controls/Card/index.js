@@ -1,3 +1,5 @@
-import Base from './Base';
+import Theme from './CardTheme';
 
-export default Base;
+module.exports = {
+  CardTheme: Theme,
+};
