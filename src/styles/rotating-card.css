@@ -22,6 +22,10 @@
     border-radius: 2px;
     box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
     backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .front {
@@ -69,10 +73,20 @@
     -moz-hyphens: auto;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
+    backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .transcript {
     font-size: 18px;
     color: rgba(0, 0, 0, 0.541176);
     display: block;
+    backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
