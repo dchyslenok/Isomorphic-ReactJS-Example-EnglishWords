@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 class ThemePage extends Component {
@@ -7,7 +7,7 @@ class ThemePage extends Component {
     const { wordCards } = this.props;
     return wordCards.map((item, index) => {
       return (
-        <div className='card-container'>
+        <div key={index} className='card-container'>
           <div className='card'>
             <div className='front'>
               <div>
@@ -34,6 +34,11 @@ class ThemePage extends Component {
     );
   }
 }
+
+
+ThemePage.propTypes = {
+  wordCards: PropTypes.array,
+};
 
 const mapStateToProps = (state) => {
   const propsObj = {

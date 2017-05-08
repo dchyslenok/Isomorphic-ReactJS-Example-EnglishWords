@@ -26,6 +26,7 @@ class IndexPage extends Component {
       return (
         <CardTheme
           key={index}
+          id={item.id}
           handleClick={this.handleClick}
           name={item.name}
           imageUrl={item.imgUrl}
@@ -42,6 +43,10 @@ class IndexPage extends Component {
     );
   }
 }
+
+IndexPage.propTypes = {
+  themeCards: PropTypes.array,
+};
 
 function mapStateToProps(state) {
   const propsObj = {

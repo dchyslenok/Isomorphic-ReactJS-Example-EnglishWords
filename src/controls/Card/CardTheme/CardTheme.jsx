@@ -3,8 +3,8 @@ import React, { Component, PropTypes } from 'react';
 import { CardActions, CardMedia, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import StorageIcon from 'material-ui/svg-icons/device/storage';
-import Base from './Base';
-import { CARD_THEME_LABEL } from '../../constants';
+import Base from '../Base';
+import { CARD_THEME_LABEL } from '../../../constants';
 
 class CardTheme extends Component {
 
