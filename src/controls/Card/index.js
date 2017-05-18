@@ -1,5 +1,5 @@
-import Theme from './CardTheme';
+export Card from './CardTheme';
+export CardTheme from './CardTheme';
+export CardWord from './CardWord';
 
-module.exports = {
-  CardTheme: Theme,
-};
+export default from './Card';

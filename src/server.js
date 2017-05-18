@@ -92,6 +92,7 @@ function renderHTML(componentHTML, initialState) {
           <script type="application/javascript">
             window.REDUX_INITIAL_STATE = ${JSON.stringify(initialState)};
           </script>
+          <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
       </head>
       <body>
         <div id="react-view">${componentHTML}</div>

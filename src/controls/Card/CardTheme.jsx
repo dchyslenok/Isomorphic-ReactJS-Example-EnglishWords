@@ -3,10 +3,17 @@ import React, { Component, PropTypes } from 'react';
 import { CardActions, CardMedia, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import StorageIcon from 'material-ui/svg-icons/device/storage';
-import Base from '../Base';
-import { CARD_THEME_LABEL } from '../../../constants';
+import Card from './Card';
+import { CARD_THEME_LABEL } from '../../constants';
 
 class CardTheme extends Component {
+
+  static propTypes = {
+    id: PropTypes.number,
+    imageUrl: PropTypes.string,
+    name: PropTypes.string,
+    handleClick: PropTypes.func,
+  };
 
   constructor(props) {
     super(props);
@@ -25,7 +32,7 @@ class CardTheme extends Component {
     const { id, name, imageUrl, handleClick } = this.props;
 
     return (
-      <Base>
+      <Card>
         <CardMedia>
           <img src={imageUrl} style={this.styleImg} />
         </CardMedia>
@@ -40,15 +47,9 @@ class CardTheme extends Component {
             onClick={() => handleClick(id)}
           />
         </CardActions>
-      </Base>
+      </Card>
     );
   }
 }
-
-CardTheme.propTypes = {
-  id: PropTypes.number,
-  imageUrl: PropTypes.string,
-  name: PropTypes.string,
-};
 
 export default CardTheme;

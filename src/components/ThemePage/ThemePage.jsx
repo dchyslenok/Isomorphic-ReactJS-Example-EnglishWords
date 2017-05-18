@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { CardWord } from '../../controls/Card';
 
 class ThemePage extends Component {
 
@@ -7,28 +8,14 @@ class ThemePage extends Component {
     const { wordCards } = this.props;
     return wordCards.map((item, index) => {
       return (
-        <div key={index} className='card-container'>
-          <div className='card'>
-            <div className='front'>
-              <div>
-                <img src={item.imgUrl} className='front-img'/>
-              </div>
-              <div className='card-text'>
-                <span className='word'>{item.word}</span>
-                <span className='transcript'>{`[${item.transcription}]`}</span></div>
-            </div>
-            <div className='back'>
-              <span className='word'>{item.translate}</span>
-            </div>
-          </div>
-        </div>
+        <CardWord key={index} {...item} />
       );
     });
   }
 
   render() {
     return (
-      <div className="center">
+      <div className='center'>
         {this.renderList()}
       </div>
     );

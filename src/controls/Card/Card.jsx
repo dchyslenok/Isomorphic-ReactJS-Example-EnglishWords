@@ -1,7 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import Paper from 'material-ui/Paper';
 
-class Base extends Component {
+class Card extends Component {
+
+  static propTypes = {
+    children: PropTypes.node,
+  };
 
   constructor(props) {
     super(props);
@@ -37,8 +41,4 @@ class Base extends Component {
   }
 }
 
-Base.propTypes = {
-  children: PropTypes.node,
-};
-
-export default Base;
+export default Card;
