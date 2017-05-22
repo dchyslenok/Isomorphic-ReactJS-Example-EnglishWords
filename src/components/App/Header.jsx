@@ -6,7 +6,7 @@ class Header extends Component {
   constructor() {
     super();
     this.style = {
-      backgroundColor: '#37474f',
+      backgroundColor: '#48B484',
       position: 'fixed',
       top: 0,
     };
