@@ -75,21 +75,22 @@ class CardWord extends Component {
         </CardActions>
       </div>
     );
-
   }
 
   renderBack() {
     const { translate } = this.props;
 
     return (
-      <CardHeader
-        title={translate}
-      />
+      <div className="card-text">
+        <div className="text-center">
+          {translate}
+        </div>
+      </div>
     );
   }
 
   renderCardContent() {
-    return this.renderFront();
+    return this.renderBack();
   }
 
   render() {
