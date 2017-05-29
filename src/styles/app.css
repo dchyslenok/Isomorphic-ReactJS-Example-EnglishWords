@@ -17,3 +17,18 @@ body {
     align-items: flex-start;
     align-content: space-around;
 }
+
+.card-text {
+    width: 220px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+}
+
+.text-center {
+    width: 220px;
+    font-size: 1.5em;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
