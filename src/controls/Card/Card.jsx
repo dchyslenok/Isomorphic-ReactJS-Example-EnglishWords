@@ -1,19 +1,30 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Paper from 'material-ui/Paper';
 
 class Card extends Component {
 
   static propTypes = {
+    width: PropTypes.number,
+    height: PropTypes.number,
     children: PropTypes.node,
+  };
+
+  static defaultProps = {
+    width: 280,
+    height: 300,
   };
 
   constructor(props) {
     super(props);
+
     this.state = {
       shadow: 1,
     };
-    this.style = {
-      width: 220,
+
+    this.defaultStyle = {
+      width: props.width,
+      height: props.height,
       display: 'inline-block',
       margin: 10,
     };
@@ -30,7 +41,7 @@ class Card extends Component {
   render() {
     return (
       <Paper
-        style={this.style}
+        style={this.defaultStyle}
         zDepth={this.state.shadow}
         onMouseOver={::this.onMouseOver}
         onMouseOut={::this.onMouseOut}

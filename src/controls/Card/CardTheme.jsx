@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { CardActions, CardMedia, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -17,14 +18,13 @@ class CardTheme extends Component {
 
   constructor(props) {
     super(props);
+
+    this.width = 280;
+    this.height = 350;
     this.styleImg = {
-      height: 200,
-      width: 200,
+      height: 240,
+      width: 250,
       borderRadius: 2,
-    };
-    this.cardText = {
-      textAlign: 'center',
-      fontSize: 16,
     };
   }
 
@@ -32,11 +32,11 @@ class CardTheme extends Component {
     const { id, name, imageUrl, handleClick } = this.props;
 
     return (
-      <Card>
+      <Card width={this.width} height={this.height}>
         <CardMedia>
-          <img src={imageUrl} style={this.styleImg} />
+          <img src={imageUrl} style={this.styleImg}/>
         </CardMedia>
-        <CardText style={this.cardText}>
+        <CardText style={{ textAlign: 'center', fontSize: 22 }}>
           {name}
         </CardText>
         <CardActions >

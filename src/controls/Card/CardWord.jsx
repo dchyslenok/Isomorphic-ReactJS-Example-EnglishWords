@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import RaisedButton from 'material-ui/RaisedButton';
-import TranslateIcon from 'material-ui/svg-icons/action/g-translate';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import VoiceIcon from 'material-ui/svg-icons/action/record-voice-over';
-import { CardActions, CardMedia, CardTitle, CardHeader } from 'material-ui/Card';
+import { CardMedia, CardTitle } from 'material-ui/Card';
 import Card from './Card';
-import constants from '../../constants';
 
 class CardWord extends Component {
 
@@ -18,22 +16,15 @@ class CardWord extends Component {
 
   constructor() {
     super();
-    this.state = {
-      rotate: false,
-    };
 
+    this.width = 280;
+    this.height = 350;
     this.styleImg = {
-      height: 200,
-      width: 200,
+      height: 240,
+      width: 250,
       borderRadius: 2,
     };
-    this.translateBtnStyle = {
-      minWidth: 163,
-    };
-    this.voiceBtnStyle = {
-      minWidth: 33,
-      marginRight: 0,
-    };
+
     this.handleSpellWord = ::this.handleSpellWord;
   }
 
@@ -47,56 +38,32 @@ class CardWord extends Component {
     }
   }
 
-  renderFront() {
-    const { imgUrl, word, transcription } = this.props;
+  render() {
+    const { imgUrl, word, transcription, translate } = this.props;
 
     return (
-      <div>
+      <Card width={this.width} height={this.height}>
         <CardMedia>
           <img src={imgUrl} style={this.styleImg}/>
         </CardMedia>
+        <FloatingActionButton
+          mini={Boolean(true)}
+          style={{ marginRight: 20, margin: '-20px 0px 0px 230px', position: 'absolute' }}
+          onClick={this.handleSpellWord}
+        >
+          <VoiceIcon />
+        </FloatingActionButton>
         <CardTitle
-          style={{ textAlign: 'center' }}
+          style={{ textAlign: 'center', padding: 5 }}
           title={word}
           subtitle={`[${transcription}]`}
           subtitleStyle={{ fontSize: 16 }}
         />
-        <CardActions>
-          <RaisedButton
-            style={this.translateBtnStyle}
-            label={constants.TRANSLATE_BTN_LABEL}
-            icon={<TranslateIcon />}
-          />
-          <RaisedButton
-            style={this.voiceBtnStyle}
-            icon={<VoiceIcon />}
-            onClick={this.handleSpellWord}
-          />
-        </CardActions>
-      </div>
-    );
-  }
-
-  renderBack() {
-    const { translate } = this.props;
-
-    return (
-      <div className="card-text">
-        <div className="text-center">
-          {translate}
-        </div>
-      </div>
-    );
-  }
-
-  renderCardContent() {
-    return this.renderBack();
-  }
-
-  render() {
-    return (
-      <Card>
-        {this.renderCardContent()}
+        <CardTitle
+          style={{ textAlign: 'center', padding: 0 }}
+          titleStyle={{ fontSize: 18 }}
+          title={translate}
+        />
       </Card>
     );
   }
