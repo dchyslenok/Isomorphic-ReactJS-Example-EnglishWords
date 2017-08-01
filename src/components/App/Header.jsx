@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import { APP_TITLE, GIT_HUB_LINK_IN_PROJECT } from '../../constants';
 
@@ -30,9 +30,5 @@ class Header extends Component {
     );
   }
 }
-
-Header.propTypes = {
-  onTitleClick: PropTypes.func,
-};
 
 export default Header;

@@ -1,6 +1,6 @@
-import actions from '../../actions';
-import { actionTypes } from '../../actions/types';
-import API from '../../shared/api';
+import actions from './actions';
+import { actionTypes } from './actions/types';
+import API from './shared/api';
 
 export default function middleware(store) {
   return (next) => (action) => {

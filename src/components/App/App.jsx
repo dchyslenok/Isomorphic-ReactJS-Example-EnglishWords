@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
@@ -40,12 +40,6 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  children: PropTypes.node,
-  actions: PropTypes.object,
-  isLoading: PropTypes.bool,
-};
 
 const mapStateToProps = (state) => {
   const propsObj = {

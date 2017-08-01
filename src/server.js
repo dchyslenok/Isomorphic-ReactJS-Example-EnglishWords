@@ -9,7 +9,7 @@ import API from './shared/api';
 
 import configureStore from './store/configureStore';
 import routes from './routes';
-import actions from './actions';
+import * as actions from './actions';
 
 global.navigator = { userAgent: 'all' };
 const app = express();
@@ -87,8 +87,11 @@ function renderHTML(componentHTML, initialState) {
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>English Word</title>
+          
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.2/semantic.min.css"></link>
           <link rel="stylesheet" href="${assetUrl}/public/assets/styles.css">
+          
           <script type="application/javascript">
             window.REDUX_INITIAL_STATE = ${JSON.stringify(initialState)};
           </script>
