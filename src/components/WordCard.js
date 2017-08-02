@@ -21,10 +21,14 @@ class WordCard extends Component {
     onClick: () => {},
   };
 
-  handleClick = (e) => {
-    const { onClick } = this.props;
+  handleClick = () => {
+    const { word } = this.props;
 
-    if (onClick) onClick(e, this.props);
+    if (responsiveVoice.isPlaying()) {
+      responsiveVoice.cancel();
+    } else {
+      responsiveVoice.speak(word, 'UK English Female');
+    }
   };
 
   render() {
@@ -34,13 +38,19 @@ class WordCard extends Component {
     const defaultImgWidth = 290;
 
     return (
-      <Card className="card-text" centered={Boolean(true)} >
+      <Card className="card-text" centered={Boolean(true)}>
         <Card.Content extra>
           <Image src={imgUrl} width={defaultImgWidth} height={defaultImgHeight} />
           <Card.Header>
             <div className="lg-text-header">
               {word}
-              <Button circular color="twitter" icon="volume up" floated="right" />
+              <Button
+                circular
+                color="twitter"
+                icon="volume up"
+                floated="right"
+                onClick={this.handleClick}
+              />
             </div>
           </Card.Header>
           <Card.Meta>

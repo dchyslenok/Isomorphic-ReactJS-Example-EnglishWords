@@ -63,3 +63,9 @@ body {
 .ui.inverted.green.menu, .ui.inverted.menu .green.active.item {
     background-color: #48B484
 }
+
+.app-title {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+}

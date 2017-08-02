@@ -86,6 +86,7 @@ function renderHTML(componentHTML, initialState) {
       <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
           <title>English Word</title>
           
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

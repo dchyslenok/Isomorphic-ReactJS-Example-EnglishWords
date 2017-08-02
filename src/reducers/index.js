@@ -1,5 +1,5 @@
-import { actionTypes } from '../actions/types';
 import Immutable from 'seamless-immutable';
+import { actionTypes } from '../actions/types';
 
 const initialState = Immutable({
   themeCards: [],

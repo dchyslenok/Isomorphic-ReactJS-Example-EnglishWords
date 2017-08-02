@@ -2,7 +2,6 @@ import { actionTypes } from './types';
 import API from '../shared/api';
 
 
-
 const themesRequest = () => ({
   type: actionTypes.THEMES_REQUEST,
 });
@@ -47,7 +46,6 @@ const themeSelect = id => (
 );
 
 const activePageHome = () => (dispatch, getState) => {
-
   if (!getState().root.themeCards.length) {
     dispatch(themesRequest());
 

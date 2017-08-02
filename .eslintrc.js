@@ -42,5 +42,7 @@ module.exports = {
     "strict": [2, "global"],
     "import/prefer-default-export": "off"
   },
-  "globals": {}
+  "globals": {
+    "responsiveVoice": true,
+  }
 };

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 import { Card } from 'semantic-ui-react';
-
 import ThemeCard from '../components/ThemeCard';
 import { themeSelect } from '../actions';
 
@@ -37,7 +36,7 @@ class HomePage extends Component {
 
     return (
       <div className="content-wrapper">
-        <Card.Group stackable={Boolean(true)}>
+        <Card.Group>
           {themeCards.map(item => (
             <ThemeCard
               id={item.id}

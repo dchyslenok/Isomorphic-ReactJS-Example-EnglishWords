@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card } from 'semantic-ui-react';
-
 import WordCard from '../components/WordCard';
 
 class ThemePage extends Component {
@@ -20,8 +19,8 @@ class ThemePage extends Component {
 
     return (
       <div className="content-wrapper">
-        <Card.Group >
-          {wordCards.map((item) => (
+        <Card.Group>
+          {wordCards.map(item => (
             <WordCard
               id={item.id}
               key={item.id}
